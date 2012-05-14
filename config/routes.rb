@@ -239,6 +239,7 @@ Foreman::Application.routes.draw do
           get 'console'
         end
       end
+      resources :images
       collection do
         get  'auto_complete_search'
         post 'provider_selected'

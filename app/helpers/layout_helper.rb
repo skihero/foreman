@@ -81,11 +81,12 @@ module LayoutHelper
     end
   end
 
-  def submit_or_cancel f, overwrite = false
+  def submit_or_cancel f, overwrite = false, args = { }
+    args[:cancel_path] ||= eval "#{controller_name}_path"
     content_tag(:div, :class => "form-actions") do
       text    = overwrite ? "Overwrite" : "Submit"
-      options = overwrite ? {:class => "btn btn-danger"} : {:class => "btn btn-primary",:disable_with => 'submitting'}
-      link_to("Cancel", eval("#{controller_name}_path"), :class => "btn") + " " +
+      options = overwrite ? {:class => "btn btn-danger"} : {:class => "btn btn-primary"}
+      link_to("Cancel", args[:cancel_path], :class => "btn") + " " +
       f.submit(text, options)
     end
   end
