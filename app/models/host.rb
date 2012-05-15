@@ -601,6 +601,14 @@ class Host < Puppet::Rails::Host
     read_attribute(:certname) || name
   end
 
+  def queuename
+    @queuename ||= Foreman.uuid
+  end
+
+  def queuename=(value)
+    @queuename = value
+  end
+
   private
   # align common mac and ip address input
   def normalize_addresses
