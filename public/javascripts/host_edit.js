@@ -39,6 +39,7 @@ function submit_host(form){
   var url = form.attr("action");
   stop_pooling = false;
   $("body").css("cursor", "progress");
+  clear_errors();
   animate_progress();
 
   $.ajax({
@@ -62,10 +63,16 @@ function submit_host(form){
     complete: function(response){
       stop_pooling = true;
       $("body").css("cursor", "auto");
-      $("#host-progress").hide();
     }
   });
   return false;
+}
+
+function clear_errors(){
+  $('.error').children().children('.help-inline').remove();
+  $('.error').removeClass('error');
+  $('.tab-error').removeClass('tab-error');
+  $('.alert-error').remove();
 }
 
 function animate_progress(){
