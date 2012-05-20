@@ -1,4 +1,4 @@
-<% if @console.is_a?(VNCProxy) -%>
+<% if @console[:proxy_port] -%>
   <%= content_for(:head) { javascript_tag "var INCLUDE_URI = '/javascripts/noVNC/';" } %>
   <%= javascript 'noVNC/vnc', 'noVNC/ui', 'noVNC' %>
 
