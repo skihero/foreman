@@ -16,7 +16,7 @@ module Orchestration::SSHProvision
     protected
     def queue_ssh_provision
       return unless ssh_provision? and errors.empty?
-      new_record? ? queue_ssh_provision_create : queue_compute_update
+      new_record? ? queue_ssh_provision_create : queue_ssh_provision_update
     end
 
     # I guess this is not going to happen on create as we might not have an ip address yet.
@@ -32,7 +32,7 @@ module Orchestration::SSHProvision
                    :action => [self, :setSSHProvision])
     end
 
-    def queue_compute_update;
+    def  queue_ssh_provision_update
     end
 
     def setSSHProvisionScript
